@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <style>
+        .portfolio-item {
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+        }
+        .modal-body img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <title>Basic Template - 2</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="./index.html" class="navbar-brand">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"">
+          <span class="navbar-toggler-icon"></span></button>
+
+          <div id="navbarNav" class="collapse navbar-collapse"">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="./index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" 
+                  href="#"
+                  role="button"
+                  id="navbarDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">Contact</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown"">
+                    <li><a class="dropdown-item" href="./index.html#aaa">디자인</a></li>
+                    <li><a class="dropdown-item" href="#bbb">영상</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a href="https://www.daum.net" target="_blank" class="dropdown-item">Web</a></li>
+                  </ul>
+
+
+              </li>
+            </ul>
+
+            <form class="d-flex">
+              <input type="search" class="form-cotrol me-2" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+          </div>
+
+        </div>
+      </nav>
+    </header>
+
+
+    <h1 class="text-center">공사중</h1>
+
+    <div class="container mt-5">
+      <section id="about">
+          <h2>소개</h2>
+          <p>안녕하세요. 저는 웹 개발자입니다. 창의적이고 효율적인 웹 솔루션을 만드는 것을 좋아합니다.</p>
+      </section>
+
+      <section id="portfolio" class="mt-5">
+          <h2>디자인 포트폴리오</h2>
+          <div class="row">
+              <div class="col-md-4 portfolio-item" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-title="프로젝트 1" data-img="./images/1.jpg" data-description="이것은 프로젝트 1에 대한 설명입니다.">
+                  <img src="./images/1.jpg" alt="프로젝트 1" class="img-fluid">
+                  <h3>프로젝트 1</h3>
+              </div>
+              <div class="col-md-4 portfolio-item" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-title="프로젝트 2" data-img="/api/placeholder/800/600" data-description="이것은 프로젝트 2에 대한 설명입니다.">
+                  <img src="/api/placeholder/400/300" alt="프로젝트 2" class="img-fluid">
+                  <h3>프로젝트 2</h3>
+              </div>
+              <div class="col-md-4 portfolio-item" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-title="프로젝트 3" data-img="/api/placeholder/800/600" data-description="이것은 프로젝트 3에 대한 설명입니다.">
+                  <img src="/api/placeholder/400/300" alt="프로젝트 3" class="img-fluid">
+                  <h3>프로젝트 3</h3>
+              </div>
+          </div>
+      </section>
+
+ 
+    </div>
+
+    <!-- 포트폴리오 모달 -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                  <img src="" alt="" class="img-fluid">
+                  <p class="mt-3"></p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <footer></footer>
+        <script src="./js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const modal = document.getElementById('portfolioModal');
+                const title = modal.querySelector('.modal-title');
+                const img = modal.querySelector('.modal-body img');
+                const description = modal.querySelector('.modal-body p');
+
+                title.textContent = this.dataset.title;
+                img.src = this.dataset.img;
+                img.alt = this.dataset.title;
+                description.textContent = this.dataset.description;
+            });
+        });
+    </script>
+      </body>
+    </html>

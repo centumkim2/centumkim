@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="./css/app.css">
+    <style>
+      /* ease: 천천-빠름-천천
+      ease-in: 보통-빠르게
+      ease-out: 보통-느리게
+      ease-in-out: 천천-보통-천천(ease와 그래프 모양이 같은데, 기울기 변화 속도는 다르다) */
+      
+      .progress-bar {
+        transition: width 1s ease-in-out;
+      }
+      .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+      .timeline-item {
+        padding: 20px 30px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+      .timeline-item-content {
+        padding: 20px;
+        background: white;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .timeline-item:nth-child(odd) {
+        left : 0;
+      }
+      .timeline-item:nth-child(even) {
+        left : 50%
+      }
+      .timeline-item:nth-child(odd)::before {
+        content:'';
+        position: absolute;
+        top: 50%;
+        right: -8px;
+        width: 16px;
+        height: 16px;
+        background-color: white;
+        border: 4px solid #ff9f55;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .timeline-item:nth-child(even)::before {
+        content:'';
+        position: absolute;
+        top: 50%;
+        left: -8px;
+        width: 16px;
+        height: 16px;
+        background-color: white;
+        border: 4px solid #ff9f55;
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+    </style>
+    <title>Basic Template - 2</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a href="#" class="navbar-brand">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"">
+          <span class="navbar-toggler-icon"></span></button>
+
+          <div id="navbarNav" class="collapse navbar-collapse"">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" 
+                  href="#"
+                  role="button"
+                  id="navbarDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">Contact</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown"">
+                    <li><a class="dropdown-item" href="#aaa">디자인</a></li>
+                    <li><a class="dropdown-item" href="#bbb">영상</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a href="https://www.daum.net" target="_blank" class="dropdown-item">Web</a></li>
+                  </ul>
+              
+              
+              </li>
+            </ul>
+
+            <form class="d-flex">
+              <input type="search" class="form-cotrol me-2" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            
+          </div>
+          
+        </div>
+      </nav>
+    </header>
+
+    
+    <main class="my-5">
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7">
+              <img src="./images/1.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-5">
+              <h1 class="mt-5">Busan</h1>
+              <p class="mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla fugit molestiae quis autem fuga officia ullam sed dicta, beatae inventore adipisci fugiat eius, ipsum quaerat expedita, accusantium dignissimos architecto corporis!</p>
+              <a href="./portfolio.html" target="_blank"><button class="btn btn-success mt-3">Portfolio</button></a>
+            </div>
+          </div>
+          <div class="row my-5">
+            <div class="col">
+              <div class="bg-secondary text-white py-3 card text-center">
+                <div class="card-body">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, labore.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section id="career">
+      <div class="container">
+      <h2 class="text-center my-5">My Career Timeline</h2> 
+        <div class="timeline"> 
+          <div class="timeline-item">
+            <div class="timeline-item-content">
+              <h3>2018</h3>
+              <p>Started my journey as a Junior Developer</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item-content">
+              <h3>2019</h3>
+              <p>Promoted to Mid-level Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+      
+    <section id="skill">
+      <div class="container mt-5">
+        <h2 class="mb-3">나의 스킬</h2>
+        <p class="mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid officiis fugit omnis quae, dolor dignissimos saepe. Aut quibusdam quasi nihil sapiente quod consectetur corporis quos, aspernatur veritatis, ducimus, molestiae quo. </p>  
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>HTML</span>
+              <span>100%</span>
+            </div>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 0%" data-bs-target="100"></div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>CSS</span>
+              <span>90%</span>
+            </div>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 0%" data-bs-target="90"></div>
+            </div>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Bootstarp</span>
+              <span>90%</span>
+            </div>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 0%" data-bs-target="100"></div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>PHP</span>
+              <span>85%</span>
+            </div>
+            <div class="progress" style="height: 20px;">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 0%" data-bs-target="85"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      
+      <section id="aaa">
+        <div class="container">
+          <div class="row my-5">
+            <div class="col">
+              <div class="card-group">
+                <div class="card">
+                  <img src="./images/2.jpg" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">Card Title 1</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, officiis veniam assumenda recusandae cupiditate repudiandae expedita ducimus nemo esse autem quo, obcaecati sit similique nostrum ipsa illum laborum nam dolorem!</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="./card.html" target="_blank"> <button class="btn btn-success"> Read More</button> </a>
+                      </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="./images/4.jpg" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">Card Title 2</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, officiis veniam assumenda recusandae cupiditate repudiandae expedita ducimus nemo esse autem quo, obcaecati sit similique nostrum ipsa illum laborum nam dolorem!</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="./card.html" target="_blank"> <button class="btn btn-success"> Read More</button> </a>
+                      </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <img src="./images/4.jpg" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">Card Title 3</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, officiis veniam assumenda recusandae cupiditate repudiandae expedita ducimus nemo esse autem quo, obcaecati sit similique nostrum ipsa illum laborum nam dolorem!</p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="./card.html" target="_blank"> <button class="btn btn-success"> Read More</button> </a>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+        
+      </section>
+
+
+
+      
+      <section>
+        <div class="container mt-5">
+          <h2 class="text-center mb-5">Design & Video Portfolio</h2>
+          <!-- 검색 입력 필드 -->
+          <input type="text" id="searchInput" class="form-control" placeholder="검색어를 입력하세요....">
+           <!-- 분류 버튼 -->
+          <div class="text-center mb-4">
+            <button class="btn btn-primary filter-btn" data-filter="all" >전체</button>
+            <button class="btn btn-primary filter-btn" data-filter="design" >디자인</button>
+            <button class="btn btn-primary filter-btn" data-filter="video" >영상</button>
+          </div>
+
+          <!-- 포트폴리오 아이템 -->
+          <div class="row" id="portfolio-items">
+            <div class="col-md-4 col-sm-6 portfolio-item" data-aos="fade-up" data-category="design">
+              <img src="./images/1.jpg" alt="디자인 1"
+                class="img-fluid"
+                data-bs-toggle="modal"
+                data-bs-target="#designModal1">
+              <h4>디자인 프로젝트 1</h4>
+              
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item" data-category="design">
+                  <img src="./images/2.jpg" alt="디자인 2"
+                    class="img-fluid"
+                    data-bs-toggle="modal"
+                    data-bs-target="#designModal2">
+                  <h4>디자인 프로젝트 1</h4>
+
+            </div>
+
+            <div class="col-md-4 col-sm-6 portfolio-item" data-category="video">
+                  <img src="./images/1.jpg" alt="영상 2"
+                    class="img-fluid"
+                    data-bs-toggle="modal"
+                    data-bs-target="#videoModal1">
+                  <h4>영상 프로젝트 1</h4>
+
+            </div>
+          </div>
+          <div class="row"  id="portfolio-items">
+            <div class="col-md-4 col-sm-6 portfolio-item" data-category="design">
+              <img src="./images/2.jpg" alt="디자인 3"
+                class="img-fluid"
+                data-bs-toggle="modal"
+                data-bs-target="#designModal3">
+              <h4>디자인 프로젝트 3</h4>
+
+            </div>
+
+            <div class="col-md-4 col-sm-6 portfolio-item" data-category="video">
+              <img src="./images/1.jpg" alt="영상 2"
+                class="img-fluid"
+                data-bs-toggle="modal"
+                data-bs-target="#videoModal2">
+              <h4>영상 프로젝트 2</h4>
+
+            </div>
+          </div>
+
+
+
+
+
+          
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="text-center">
+            <h2>Get in touch</h2>
+            <p class="land">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div class="row justify-content-center my-5">
+            
+            <div class="col-6">
+              <form action="">
+                <label for="email" class="form-label">Email : </label>
+                <input type="email" class="form-control" id="email" placeholder="my@email.com">
+                <div class="my-5">
+                  <label for="name" class="for-label">Name : </label>
+                  <input type="text" id="name" placeholder="e.g. 김센텀" class="form-control">
+                </div>
+                <label for="subject" class="form-label">Subject</label>
+                <select name="subject" id="subject" class="form-select">
+                  <option value="pricing">Pricing</option>
+                  <option value="technical" selected>Technical</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="mt-5">  
+                  <label for="query">Write a message</label>
+                  <textarea name="query" id="query" style="height: 150px;" class="form-control" placeholder="Write a message"></textarea>
+                </div>
+                <div class="mt-5">
+                  <button type="submit" class="btn btn-success">전송!</button>
+                  <button type="reset" class="btn btn-danger">취소!</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+    </main>
+
+
+  <section id="modal_section">
+  <div class="container">
+    
+    <div class="modal fade"
+      id="designModal1"
+      tabindex="-1"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">디자인 프로젝트 1</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"></div>
+         <img src="./images/1.jpg" alt="" class="img-fluid mb-3">
+          <p>디자인 프로젝트 1에 대한 설명을 ....</p>
+        </div>
+        
+      </div>
+      </div>
+
+    <div class="modal fade"
+      id="designModal2"
+      tabindex="-1"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">디자인 프로젝트 3</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"></div>
+         <img src="./images/2.jpg" alt="" class="img-fluid mb-3">
+          <p>디자인 프로젝트 3에 대한 설명을 ....</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal fade"
+      id="designModal3"
+      tabindex="-1"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">디자인 프로젝트 3</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"></div>
+         <img src="./images/2.jpg" alt="" class="img-fluid mb-3">
+          <p>디자인 프로젝트 3에 대한 설명을 ....</p>
+        </div>
+
+      </div>
+      </div>
+
+     <!-- 영상 모달 -->
+    <div class="modal fade"
+      id="videoModal1"
+      tabindex="-1"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">영상 프로젝트 1</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close""></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe  src="https://www.youtube.com/embed/NSS2w7tOjkM?autoplay=1&mute=1&controls=1&loop=1&playlist=NSS2w7tOjkM" allowfullscreen></iframe>
+            </div>
+            <p>영상 프로젝트 1에 대한 설명을 ....</p>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="modal fade"
+      id="videoModal2"
+      tabindex="-1"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">영상 프로젝트 2</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close""></button>
+          </div>
+          <div class="modal-body">
+            <div class="ratio ratio-16x9">
+              <iframe  src="https://www.youtube.com/embed/QZZqytpDUiw?autoplay=1&mute=1&controls=1&loop=1&enablejsapi=1&playlist=QZZqytpDUiw" allowfullscreen></iframe>
+            </div>
+            <p>영상 프로젝트 2에 대한 설명을 ....</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    
+      </div>
+  </section>
+
+
+    
+    <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container">
+        <a style="text-decoration: none;" href="#"><span>Copyright 2024 김센텀
+           </span></a>
+      </div>
+    </footer>
+    
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+   <script>
+     AOS.init();
+     document.addEventListener("DOMContentLoaded",function() {
+
+      const progressBars = document.querySelectorAll('.progress-bar');
+       progressBars.forEach(bar => {
+         const target = bar.getAttribute('data-bs-target');
+         setTimeout(() => {
+           bar.style.width = target+'%';
+         },500);
+       })
+
+       
+       // 검색 기능
+    const searchInput = document.getElementById("searchInput");
+    const portfolioItems= document.querySelectorAll(".portfolio-item");
+
+    searchInput.addEventListener("input",function(){
+      const searchTerm = this.value.toLowerCase();
+        portfolioItems.forEach((item) => {
+          const title = item.querySelector("h4").textContent.toLowerCase();
+          if(title.includes(searchTerm)) {
+            item.style.display ="block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+    });
+       // 분류 기능
+      const filterButtons = document.querySelectorAll(".filter-btn");
+       filterButtons.forEach((button) => {
+         button.addEventListener("click", function() {
+           const filter = this.getAttribute("data-filter");
+            portfolioItems.forEach((item) => {
+              if(filter === "all" || item.getAttribute("data-category") === filter)
+              {
+                item.style.display = "block";
+              } else {
+                item.style.display = "none";
+              }
+            });
+           
+         });
+       });
+
+        
+     });
+
+
+     function isElementInViewport(el) {
+       let rect = el.getBoundingClientRect();
+       return (
+         rect.top >= 0 &&
+         rect.left >= 0 &&
+         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+         rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+       );
+     }
+
+    function animateTimeline() {
+      let items = document.querySelectorAll('.timeline-item');
+      items.forEach(function(item) {
+        if(isElementInViewport(item)) {
+          item.classList.add('visible');
+        }
+      })
+    }
+     
+
+     
+     window.addEventListener("load", animateTimeline);
+     window.addEventListener("scroll", animateTimeline);
+   </script>
+  </body>
+</html>
